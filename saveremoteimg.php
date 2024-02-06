@@ -3,7 +3,7 @@
  * Function from Bitrix API save remote src image, resize & add watermark,
  * return id image from `b_file` table of false
  * @version		$Id: saveremoteimg.php 2024-02-06 23:20:00Z itscript $
- * @package		bxSaveRemoteImg
+ * @package		saveRemoteImg
  * @author		Dokukin Vyacheslav Olegovich <toorrp4@gmail.com> https://itscript.ru
  * @copyright	Copyright (c) 2023-2024 Itscript.
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
