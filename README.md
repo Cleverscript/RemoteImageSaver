@@ -19,9 +19,10 @@ More details [ResizeImageGet](https://dev.1c-bitrix.ru/api_help/main/reference/c
 
 If you need to get the file ID
 ```php
+include_once('remoteimagesaver.php');
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-if ($id = saveRemoteImg(
+if ($id = RemoteImageSaver::saveRemoteImg(
     $MainPictureUrl, 
     800, 800, false, 
     BX_RESIZE_IMAGE_EXACT,
@@ -39,9 +40,10 @@ if ($id = saveRemoteImg(
 
 If you need to add a file to an element
 ```php
+include_once('remoteimagesaver.php');
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-$makeFileArray = saveRemoteImg(
+$makeFileArray = RemoteImageSaver::saveRemoteImg(
     $MainPictureUrl, 
     800, 800, false, 
     BX_RESIZE_IMAGE_EXACT,

@@ -1,6 +1,6 @@
 <?php 
 /**
- * Function from Bitrix API save remote src image, resize & add watermark
+ * Class from Bitrix API save remote image, resize & add watermark
  * $src - string url path to remote img
  * $width - int 
  * $height - int 
@@ -8,15 +8,15 @@
  * $resizeType - constant
  * $watermark - array ["name" => "watermark", "position" => "center", "file"=>"FILE_PATH"]
  *
- * @version   $Id: saveremoteimg.php 2024-02-06 23:20:00Z itscript $
- * @package   saveRemoteImg
+ * @version   $Id: remoteimagesaver.php 2024-02-06 23:20:00Z itscript $
+ * @package   RemoteImageSaver
  * @author    Dokukin Vyacheslav Olegovich <toorrp4@gmail.com> https://itscript.ru
  * @copyright Copyright (c) 2023-2024 Itscript.
  * @license   GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  * @return    id image from `b_file` table of false
  */
 
-abstract class Image
+abstract class RemoteImageSaver
 {
     function saveRemoteImg(string $src, int $width, int $height, bool $mode = true, $resizeType = null, array $watermark = []): bool|int|array
     {
