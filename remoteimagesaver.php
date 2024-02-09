@@ -18,7 +18,7 @@
 
 abstract class RemoteImageSaver
 {
-    function saveRemoteImg(string $src, int $width, int $height, bool $mode = true, $resizeType = null, array $watermark = []): bool|int|array
+    public static function saveRemoteImg(string $src, int $width, int $height, bool $mode = true, $resizeType = null, array $watermark = []): bool|int|array
     {
         $hash = md5($src);
         $savePath = $_SERVER['DOCUMENT_ROOT'] . '/upload/remote_img';
