@@ -41,7 +41,7 @@ If you need to add a file to an element
 ```php
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-$pictureDetail = saveRemoteImg(
+$makeFileArray = saveRemoteImg(
     $MainPictureUrl, 
     800, 800, false, 
     BX_RESIZE_IMAGE_EXACT,
@@ -51,7 +51,7 @@ $pictureDetail = saveRemoteImg(
         "file" => $_SERVER['DOCUMENT_ROOT'] . '/upload/wm.png'
     ]);
 
-if (!empty($pictureDetail)) {
+if (!empty($makeFileArray)) {
 
     $el = new \CIBlockElement;
     $arFields = Array(
@@ -63,13 +63,15 @@ if (!empty($pictureDetail)) {
         "PREVIEW_TEXT"   => "",
         "DETAIL_TEXT"    => '',
         "DETAIL_TEXT_TYPE" => 'html',
-        "DETAIL_PICTURE" => $pictureDetail
+        "DETAIL_PICTURE" => $makeFileArray
     );
     if ($id = $el->Add($arFields)) {
         echo "Success add element #$id";
     } else {
         echo $el->LAST_ERROR;
     }
+
+    self::removeTrashImage($makeFileArray['TRASH']);
 }
 ```
 

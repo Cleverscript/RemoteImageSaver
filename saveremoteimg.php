@@ -70,10 +70,10 @@ abstract class Image
             $fileContent = $resizeFileDst;
         }
 
-        if (!$mode) {
-            $makeFileArray['TRASH'][] = $originFileDst;
-            $makeFileArray['TRASH'][] = $resizeFileDst;
+        $makeFileArray['TRASH'][] = $originFileDst;
+        $makeFileArray['TRASH'][] = $resizeFileDst;
 
+        if (!$mode) {
 
             $id = \CFile::SaveFile(
                 [
