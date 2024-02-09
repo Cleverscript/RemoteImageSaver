@@ -5,7 +5,7 @@
  * $width - int 
  * $height - int 
  * $mode - boolean, false: return ID file from table b_file, true: make file array
- * $resizeType - constant
+ * $resizeType - integer
  * $watermark - array ["name" => "watermark", "position" => "center", "file"=>"FILE_PATH"]
  *
  * @version   $Id: remoteimagesaver.php 2024-02-06 23:20:00Z itscript $
