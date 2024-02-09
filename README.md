@@ -3,7 +3,7 @@ Class from Bitrix API save remote image, resize & add watermark, return id image
 
 #### Array format for watermark:
 ```php
-["name" => "watermark", "position" => "center", "file"=>"FILE_PATH"];
+["name" => "watermark", "position" => "center", "file" => "FILE_PATH"];
 ```
 
 #### Resize Types:
@@ -22,7 +22,7 @@ If you need to get the file ID
 include_once('remoteimagesaver.php');
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-if ($id = RemoteImageSaver::saveRemoteImg(
+if ($id = RemoteImageSaver::save(
     $MainPictureUrl, 
     800, 800, false, 
     BX_RESIZE_IMAGE_EXACT,
@@ -40,12 +40,16 @@ if ($id = RemoteImageSaver::saveRemoteImg(
 
 If you need to add a file to an element
 ```php
+use \Bitrix\Main;
+use \Bitrix\Main\Loader;
+Loader::includeModule('iblock');
+
 include_once('remoteimagesaver.php');
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-$makeFileArray = RemoteImageSaver::saveRemoteImg(
+$makeFileArray = RemoteImageSaver::save(
     $MainPictureUrl, 
-    800, 800, false, 
+    400, 400, true, 
     BX_RESIZE_IMAGE_EXACT,
     [
         "name" => "watermark", 
@@ -58,7 +62,8 @@ if (!empty($makeFileArray)) {
     $el = new \CIBlockElement;
     $arFields = Array(
         "CODE" => 'test',
-        "IBLOCK_ID"      => $productsIblockId,
+        "IBLOCK_ID"      => 2,
+        "IBLOCK_SECTION_ID"    => 247,
         "PROPERTY_VALUES" => [],
         "NAME"           => 'Test',
         "ACTIVE"         => "Y",
@@ -73,7 +78,7 @@ if (!empty($makeFileArray)) {
         echo $el->LAST_ERROR;
     }
 
-    self::removeTrashImage($makeFileArray['TRASH']);
+    self::remove($makeFileArray['TRASH']);
 }
 ```
 
