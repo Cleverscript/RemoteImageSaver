@@ -16,11 +16,11 @@ More details [ResizeImageGet](https://dev.1c-bitrix.ru/api_help/main/reference/c
 
 
 ### Usege
+
+If you need to get the file ID
 ```php
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
-
-// If you need to get the file ID
 if ($id = saveRemoteImg(
     $MainPictureUrl, 
     800, 800, false, 
@@ -35,8 +35,12 @@ if ($id = saveRemoteImg(
 
     echo "<img src=\"$file[SRC] \"/>";
 }	
+```
 
-// If you need to add a file to an element
+If you need to add a file to an element
+```php
+$MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
+
 $pictureDetail = saveRemoteImg(
     $MainPictureUrl, 
     800, 800, false, 
