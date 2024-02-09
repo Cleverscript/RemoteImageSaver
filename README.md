@@ -1,5 +1,5 @@
-# saveRemoteImg 1C-Bitrix
-Function from Bitrix API save remote src image, resize & add watermark, return id image from `b_file` table of false.
+# RemoteImageSaver [1C-Bitrix]
+Class from Bitrix API save remote image, resize & add watermark, return id image from `b_file` table of false.
 
 #### Array format for watermark:
 ```php
