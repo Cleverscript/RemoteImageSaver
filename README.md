@@ -19,9 +19,11 @@ More details [ResizeImageGet](https://dev.1c-bitrix.ru/api_help/main/reference/c
 ```php
 $MainPictureUrl = 'https://cbu01.alicdn.com/img/ibank/O1CN01Ey8nb326WubqZsCiZ_!!2244787670-0-cib.jpg';
 
+
+// If you need to get the file ID
 if ($id = saveRemoteImg(
     $MainPictureUrl, 
-    800, 800, 
+    800, 800, false, 
     BX_RESIZE_IMAGE_EXACT,
     [
         "name" => "watermark", 
@@ -33,6 +35,38 @@ if ($id = saveRemoteImg(
 
     echo "<img src=\"$file[SRC] \"/>";
 }	
+
+// If you need to add a file to an element
+$pictureDetail = saveRemoteImg(
+    $MainPictureUrl, 
+    800, 800, false, 
+    BX_RESIZE_IMAGE_EXACT,
+    [
+        "name" => "watermark", 
+        "position" => "center", 
+        "file" => $_SERVER['DOCUMENT_ROOT'] . '/upload/wm.png'
+    ]);
+
+if (!empty($pictureDetail)) {
+
+    $el = new \CIBlockElement;
+    $arFields = Array(
+        "CODE" => 'test',
+        "IBLOCK_ID"      => $productsIblockId,
+        "PROPERTY_VALUES" => [],
+        "NAME"           => 'Test',
+        "ACTIVE"         => "Y",
+        "PREVIEW_TEXT"   => "",
+        "DETAIL_TEXT"    => '',
+        "DETAIL_TEXT_TYPE" => 'html',
+        "DETAIL_PICTURE" => $pictureDetail
+    );
+    if ($id = $el->Add($arFields)) {
+        echo "Success add element #$id";
+    } else {
+        echo $el->LAST_ERROR;
+    }
+}
 ```
 
 
